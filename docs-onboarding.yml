@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docs-onboarding
+spec:
+  selector:
+    matchLabels:
+      app: hello
+      tier: backend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: hello
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: docs-onboarding
+          image: "mykaua/nginx_c:latest"
+          ports:
+            - containerPort: 3002

@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: test
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: mykahello.com
+    http:
+      paths:
+      - path: /api
+        backend:
+          serviceName: docs-auth
+          servicePort: 3003
+      - path: /pai
+        backend:
+          serviceName: docs-onboarding
+          servicePort: 3002
